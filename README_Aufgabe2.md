@@ -34,10 +34,13 @@
 - nach Korrektur der Fehler wurde die Action korrekt ausgeführt, auch wenn sie aufgrund von Fehler in den Tests fehlschlug
 
 ## Sonarqube
-Die Integration von Sonarqube war leider nicht möglich. Bei der Erstellung des Projektes ist nur Zugriff auf Repositories der FH möglich, daher wurde ein lokales Projekt erstellt. Die entsprechenden Secrets wurden dann erstellt und im Repository eingegeben. Leider war trotzdem kein Zugriff auf das Repository möglich. Daher erfolgte eine Recherche, bei der ein Transfer des Repositories in die FH-SWF-Organisation vorgeschlagen wurde. Dies wurde entsprechend vollzogen und das Projekt konnte bei Sonarqube als Projekt angelegt werden. Leider stellte sich dabei heraus, dass es nach dem Transfer nicht mehr möglich war, die Einstellungen des Repositories zu erreichen, wodurch keine Eintragung der Secrets mehr möglich war.
+Die Integration von Sonarqube war leider nicht möglich. Bei der Erstellung des Projektes ist nur Zugriff auf Repositories der FH möglich, daher wurde ein lokales Projekt erstellt. Die entsprechenden Secrets wurden dann erstellt und im Repository eingegeben. Leider war trotzdem kein Zugriff auf das Repository möglich. Daher erfolgte eine Recherche, bei der ein Transfer des Repositories in die FH-SWF-Organisation vorgeschlagen wurde. Dies wurde entsprechend vollzogen und das Projekt konnte bei Sonarqube als Projekt angelegt werden. Leider stellte sich dabei heraus, dass es nach dem Transfer nicht mehr möglich war, die Einstellungen des Repositories zu erreichen, wodurch die entsprechenden Secrets nicht eingetragen werden konnten. 
+
+Um dieses Problem zu umgehen wurde ein neuer Fork von dem ursprünglich erstellten Repository "todo-restless-effort" erstellt. Dieses wurde direkt unter der Organisation FH-SWF erstellt, womit Zugriff auf die Settings und damit die Secrets für Sonarqube ermöglicht wurde. Dabei handelt es sich um das jetzige Repository "swq_tb_jw_js".
 
 # Ergebnisse der automatisierten Tests und SonarQube-Analysen
 
+## Tests
 Abschließend eine Übersicht über die vorhandenen Tests. Leider konnten für die fehlgeschlagenen Tests keine Lösungen gefunden werden. Hauptsächlich waren Validierungsregeln von den Tests betroffen, die nach unserert Meinung korrekt implementiert sein sollten, aber trotz dessen nicht korrekt ausgeführt bzw. erfolgreich getestet werden konnten.
 
 | Test Description | Result | Time (ms) |
@@ -55,3 +58,7 @@ Abschließend eine Übersicht über die vorhandenen Tests. Leider konnten für d
 | POST /todos (erweiterte Validierung): sollte einen 400-Fehler zurückgeben, wenn das Datum ungültig ist | ✕ | 3 |
 | POST /todos (Grenzwerte): sollte ein Todo mit maximal erlaubter Titellänge erstellen | ✓ | 5 |
 | POST /todos (Grenzwerte): sollte einen 400-Fehler zurückgeben, wenn der Status außerhalb des gültigen Bereichs liegt | ✕ | 3 |
+
+## Sonarqube
+Sonarqube meldete zwei Security Hotspots. Der erste mit der Priorität "high" bezieht sich auf die einprogrammierten Credentials für die Keycloak-Anmeldung. Da es sich bei der Anwendung um eine Anwendung zum Testen und Lernen handelt und damit die Handhabung vereinfacht wird, wurde die Meldung bestätigt. Die Anwendung wird nicht produktiv genutzt.
+Der zweite Hotspot bezieht sich auf die Offenlegung der Versionsnummer durch die Expressanwendung. Hiermit werden potenziell Angriffe erleichtert, da Schwachstellen der bestimmten Version genutzt werden könnten. Auch hier wurde das Risiko durch die Nutzung als nicht produktive Anwendung akzeptiert und bestätigt.
