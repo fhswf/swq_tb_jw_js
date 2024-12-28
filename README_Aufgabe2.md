@@ -9,13 +9,13 @@
 - Anlegen der Github-Action
 - Test der Github-Action (Wird sie bei einem Pull-Request ausgeführt?)
 - Anlegen eines Sonarqube-Projekts
-- Integration von Sonarqube in die Github-Action (Einfügen von sonarqube.yaml)
+- Integration von Sonarqube in die Github-Action (Einfügen von build.yml)
 
 # gewählte Lösungen
 - Die Testfälle für das Frontend wurden in der todo_spec.js-Datei im Pfad cypress/integration erstellt. Dabei wurde auf eine möglichst hohe Abdeckung der Anwendung geachtet.
 - Die bereits vorhandenen Testfälle für das Backend wurden etwas erweitert, um die Funktionalität tiefer zu testen.
 - Die Github-Action wurde mit Hilfe der Dokumentation angelegt und mittels Push und Pull an/von das Repository getestet. Diese wurde auch ausgeführt, allerdings schlug sie aufgrund nicht erfolgreicher Tests fehl.
-- Das Sonarqube-Projekt wurde auf der Seite der FH angelegt. Dabei wurde zuerst ein lokales Projekt angelegt und die entsprechenden Secrets im Repository eingepflegt.
+- Das Sonarqube-Projekt wurde ausgewählt und erstellt. Es wurden die entsprechenden Secrets eingetragen und die build.yml-Datei erstellt. In der Übersichtsseite der Github-Actions konnte nachvollzogen werden, dass die Analyse ausgeführt wird.
 
 
 # Probleme - Lösungen und Erklärungen
